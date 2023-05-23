@@ -1,0 +1,14 @@
+{
+  "name": "simohelper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Spyei#7312",
+  "license": "MIT",
+  "dependencies": {
+    "aoi.js": "^6.2.6",
+    "ascii-table": "^0.0.9",
+    "discord.js": "^14.7.1",
+    "translatte": "^3.0.1"
+  }
+}
