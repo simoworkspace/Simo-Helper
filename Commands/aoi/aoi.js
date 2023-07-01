@@ -17,11 +17,11 @@ module.exports = {
             option.setName('input')
                 .setRequired(true)
                 .setDescription('Digite o nome de alguma função')
-        ),
+        ).addUserOption(option => option.setName('target').setRequired(false).setDescription('Mencione o usuário alvo')),
     run: async (interaction, client) => {
         let argu = interaction.options.getString('input')
 
-        if(!argu.includes('$')) { argu = '$' + argu }
+        if (!argu.startsWith('$')) argu = '$' + argu;
 
         if (!argu) return interaction.reply({
             embeds: [
@@ -47,6 +47,8 @@ module.exports = {
             const tdescription = await translatte(a.description, { to: 'pt' });
             const description = await tdescription.text.charAt(0).toUpperCase() + tdescription.text.slice(1);
 
+            const user = interaction.options.getUser('user');
+
             return interaction.reply({
                 embeds: [
                     new EmbedBuilder()
@@ -57,7 +59,8 @@ module.exports = {
                         .addFields({ name: `Versão`, value: `\`${a.version}\``, inline: true })
                         .addFields({ name: `Descrição`, value: `\`${description}\``, inline: false })
                         .addFields({ name: `Exemplo`, value: `\`${a.example}\``, inline: false })
-                ]
+                ],
+                content: user ? `${user}` : undefined
             });
 
         } catch (erro) {
