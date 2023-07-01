@@ -47,7 +47,7 @@ module.exports = {
             const tdescription = await translatte(a.description, { to: 'pt' });
             const description = await tdescription.text.charAt(0).toUpperCase() + tdescription.text.slice(1);
 
-            const user = interaction.options.getUser('user');
+            const user = interaction.options.getUser('target');
 
             return interaction.reply({
                 embeds: [
@@ -60,7 +60,7 @@ module.exports = {
                         .addFields({ name: `Descrição`, value: `\`${description}\``, inline: false })
                         .addFields({ name: `Exemplo`, value: `\`${a.example}\``, inline: false })
                 ],
-                content: user ? `${user}` : " "
+                content: user ? `${user}` : undefined
             });
 
         } catch (erro) {
