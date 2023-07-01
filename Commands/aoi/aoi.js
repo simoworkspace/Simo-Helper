@@ -60,7 +60,7 @@ module.exports = {
                         .addFields({ name: `Descrição`, value: `\`${description}\``, inline: false })
                         .addFields({ name: `Exemplo`, value: `\`${a.example}\``, inline: false })
                 ],
-                content: user ? `${user}` : undefined
+                content: user ? `${user}` : " "
             });
 
         } catch (erro) {
